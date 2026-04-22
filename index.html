@@ -263,7 +263,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
     <div class="eyebrow-hero">Proposta Comercial · Osasco Express × Meridio Pizza</div>
     <h1>Seu pico de sexta<br><em>nunca mais vai travar.</em></h1>
     <p class="hero-lead">
-      Você construiu o Meridio. Em fevereiro foram <strong>1.021 pedidos</strong> — e no maior dia do mês, três clientes cancelaram em 28 minutos por falta de cobertura. A entrega não pode mais depender de um único parceiro.
+      Você construiu o Meridio. Em fevereiro foram <strong>1.021 pedidos</strong> — e em março mais <strong>1.042</strong>. O bimestre bateu <strong>R$ 161.504</strong> em faturamento. A operação cresce. A cobertura de entrega ainda não acompanha.
     </p>
     <div class="hero-chips">
       <span class="chip">2 entregadores na semana · 3 no fds</span>
@@ -296,9 +296,17 @@ footer{background:var(--ink);padding:36px 0 24px;}
     <div class="eyebrow fade-up">Sua operação em números</div>
     <h2 class="sec-title fade-up">O que os dados<br><em>mostram de verdade.</em></h2>
     <div class="dados-intro fade-up">
-      Analisamos seu histórico de fevereiro de 2026. Esses números são reais — e eles mostram onde a operação precisa de estrutura.
+      Analisamos seu histórico completo de fevereiro e março de 2026. Dois meses, dois retratos. Os números são reais — e eles mostram onde a operação precisa de estrutura para não deixar dinheiro na mesa.
     </div>
-    <div class="dados-grid fade-up">
+    <!-- TABS -->
+    <div class="fade-up" style="display:flex;gap:8px;margin-bottom:20px;">
+      <button onclick="showMes('fev')" id="tab-fev" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:all .2s;">Fevereiro 2026</button>
+      <button onclick="showMes('mar')" id="tab-mar" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--ink-mid);cursor:pointer;transition:all .2s;">Março 2026</button>
+      <button onclick="showMes('bim')" id="tab-bim" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--ink-mid);cursor:pointer;transition:all .2s;">Bimestre</button>
+    </div>
+
+    <!-- FEVEREIRO -->
+    <div id="mes-fev" class="dados-grid">
       <div class="dado-card">
         <div class="dado-num">1.021</div>
         <div class="dado-label">Pedidos em fevereiro</div>
@@ -307,7 +315,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
       <div class="dado-card">
         <div class="dado-num">R$ 79</div>
         <div class="dado-label">Ticket médio</div>
-        <div class="dado-desc">Clientes que pagam bem e esperam produto na temperatura certa. Granja Viana e Jardim Barbacena concentram os maiores pedidos.</div>
+        <div class="dado-desc">Clientes que pagam bem e esperam produto na temperatura certa. Granja Viana e Santa Maria concentram os maiores volumes.</div>
       </div>
       <div class="dado-card alert">
         <div class="dado-num">14</div>
@@ -320,11 +328,100 @@ footer{background:var(--ink);padding:36px 0 24px;}
         <div class="dado-desc">13/02, 19h31 a 19h59 — três clientes desistiram em sequência no maior dia do mês. Pico sem cobertura.</div>
       </div>
     </div>
+
+    <!-- MARÇO -->
+    <div id="mes-mar" class="dados-grid" style="display:none;">
+      <div class="dado-card">
+        <div class="dado-num">1.042</div>
+        <div class="dado-label">Pedidos em março</div>
+        <div class="dado-desc">+21 pedidos a mais que fevereiro. A demanda cresceu — e o pico de 07/03 mostrou que a operação ainda trava nos momentos certos.</div>
+      </div>
+      <div class="dado-card">
+        <div class="dado-num">R$ 78</div>
+        <div class="dado-label">Ticket médio</div>
+        <div class="dado-desc">Consistência de ticket alto mês a mês. Cliente fiel, pedido recorrente. A base está construída — o que falta é entrega confiável.</div>
+      </div>
+      <div class="dado-card alert">
+        <div class="dado-num">19</div>
+        <div class="dado-label">Pedidos em 30 minutos</div>
+        <div class="dado-desc">27/03, das 19h33 às 20h02 — 19 pedidos simultâneos. Pior janela do bimestre inteiro. Sem cobertura paralela, isso é fila ou cancelamento.</div>
+      </div>
+      <div class="dado-card alert">
+        <div class="dado-num">7×</div>
+        <div class="dado-label">Cancelamentos em março</div>
+        <div class="dado-desc">Todos por "cancelamento genérico" do iFood — 5 deles entre 18h e 22h, no coração do pico. Padrão que se repete toda semana.</div>
+      </div>
+    </div>
+
+    <!-- BIMESTRE -->
+    <div id="mes-bim" class="dados-grid" style="display:none;">
+      <div class="dado-card" style="border-top:3px solid var(--gold);">
+        <div class="dado-num" style="color:var(--gold);">R$ 161k</div>
+        <div class="dado-label">Faturamento no bimestre</div>
+        <div class="dado-desc">R$ 161.504 em fev+mar. Uma operação que fatura R$ 80 mil por mês precisa de logística profissional — não de sorte na escala.</div>
+      </div>
+      <div class="dado-card" style="border-top:3px solid var(--gold);">
+        <div class="dado-num" style="color:var(--gold);">2.063</div>
+        <div class="dado-label">Pedidos no bimestre</div>
+        <div class="dado-desc">Dois meses, dois mil pedidos. A operação não é pequena — ela já tem escala para exigir estrutura dedicada de entrega.</div>
+      </div>
+      <div class="dado-card" style="border-top:3px solid var(--gold);">
+        <div class="dado-num" style="color:var(--gold);">1.350</div>
+        <div class="dado-label">Clientes únicos</div>
+        <div class="dado-desc">1.350 pessoas diferentes pediram no bimestre. Cada entrega mal feita é uma relação que começa mal — ou que termina antes da hora.</div>
+      </div>
+      <div class="dado-card alert">
+        <div class="dado-num">12×</div>
+        <div class="dado-label">Cancelamentos no bimestre</div>
+        <div class="dado-desc">5 em fevereiro, 7 em março. A tendência é de alta. Cada mês sem estrutura própria, mais cancelamentos — e mais receita que vai embora.</div>
+      </div>
+    </div>
+
+    <script>
+    function showMes(m){
+      ['fev','mar','bim'].forEach(function(x){
+        document.getElementById('mes-'+x).style.display = x===m ? 'grid' : 'none';
+        var t = document.getElementById('tab-'+x);
+        if(x===m){t.style.background='var(--red)';t.style.color='#fff';t.style.borderColor='var(--red)';}
+        else{t.style.background='var(--white)';t.style.color='var(--ink-mid)';t.style.borderColor='var(--border)';}
+      });
+    }
+    </script>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- SOLUÇÃO -->
+<!-- TENDÊNCIA CRESCIMENTO -->
+<section style="background:var(--white);padding:48px 0;">
+  <div class="wrap">
+    <div class="eyebrow fade-up">Tendência dos dados</div>
+    <h2 class="sec-title fade-up">Março foi maior.<br><em>Abril vai ser maior ainda.</em></h2>
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
+        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--green);line-height:1;margin-bottom:6px;">+21</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px;">Pedidos a mais em março</div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Crescimento de fev para mar, sem nenhuma mudança estrutural.</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--red);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
+        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--red);line-height:1;margin-bottom:6px;">19</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:4px;">Pedidos em 30 min (mar)</div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Recorde do bimestre. Foi em 27/03 às 19h33. Vai acontecer de novo.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
+        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">+40%</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;">Mais cancelamentos</div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">5 em fev → 7 em mar. A tendência é clara se nada mudar.</div>
+      </div>
+    </div>
+    <div class="fade-up" style="background:var(--ink);border-radius:var(--r);padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;">
+      <div style="font-size:36px;">📈</div>
+      <div>
+        <div style="font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:var(--white);margin-bottom:6px;">Sua operação cresce. Seus riscos também.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;">Em dois meses você processou 2.063 pedidos e R$ 161.504. Cada pedido que cancela no pico custa em média R$ 78 — mas o custo real é o cliente que não volta. Estrutura de entrega não é gasto: é proteção do que você já construiu.</div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="divider"></div>
 
 <!-- OPORTUNIDADE -->
@@ -334,7 +431,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
     <h2 class="sec-title fade-up" style="max-width:480px;">A maioria dos seus clientes<br><em>não sabe seu nome.</em></h2>
     <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">1.300+</div>
+        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">1.350</div>
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;">Clientes únicos</div>
         <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">No bimestre de fev–mar 2026</div>
       </div>
@@ -350,7 +447,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
       </div>
     </div>
     <div class="fade-up" style="background:var(--white);border-left:4px solid var(--red);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:18px 22px;font-size:14px;color:var(--ink-mid);line-height:1.7;box-shadow:var(--shadow);">
-      <strong style="color:var(--ink);">Com entrega própria, cada corrida vira contato direto.</strong> Flyer na bag, QR Code na embalagem, pizza quente na temperatura certa — o cliente passa a saber quem é o Meridio, não só qual app usou. Isso é o que o iFood não pode vender para você.
+      <strong style="color:var(--ink);">Com entrega própria, cada corrida vira contato direto.</strong> Flyer na bag, QR Code na embalagem, pizza quente na temperatura certa — o cliente passa a saber quem é o Meridio, não só qual app usou. Em dois meses você atendeu 1.350 pessoas diferentes. Quantas sabem o seu número? Isso é o que o iFood não pode vender para você.
     </div>
   </div>
 </section>
@@ -744,10 +841,59 @@ footer{background:var(--ink);padding:36px 0 24px;}
   </div>
 </section>
 
+<!-- PROVA SOCIAL -->
+<section style="background:#fafafa;padding:48px 0;">
+  <div class="wrap">
+    <div class="eyebrow fade-up">Quem já opera com a gente</div>
+    <h2 class="sec-title fade-up">Você não seria<br><em>o primeiro.</em></h2>
+    <p class="sec-lead fade-up">Cada restaurante ativo é uma referência disponível. Peça o contato — apresentamos sem problemas.</p>
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">R</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante A</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2024</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"A escala chega no domingo. Sei exatamente quem tá no turno antes de a semana começar. Isso mudou tudo."</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">M</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante B</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2023</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"Sexta-feira virou dia de vender, não de apagar incêndio. O pico chegou, os entregadores chegaram junto."</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">P</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante C</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2024</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"Antes eu ficava torcendo pra ninguém faltar. Agora, se alguém cancela, já tá coberto antes do turno."</div>
+      </div>
+    </div>
+    <div class="fade-up" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px 22px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow);">
+      <div style="font-size:22px;flex-shrink:0;">💬</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Quer falar diretamente com quem já opera? <strong style="color:var(--ink);">Peça o contato via WhatsApp</strong> — apresentamos o restaurante e você conversa sem intermediário.</div>
+      <a href="https://wa.me/5511970334125?text=Quero+falar+com+um+restaurante+que+já+opera+com+a+Osasco+Express" style="flex-shrink:0;display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:10px 18px;border-radius:50px;text-decoration:none;white-space:nowrap;">Pedir referência</a>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="wrap">
     <div class="cta-inner">
+      <!-- PERDA CALCULADA (loss aversion) -->
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:16px 24px;margin-bottom:32px;display:inline-block;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;">O que você perde por mês sem estrutura</div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">~R$ 936</div><div style="font-size:11px;color:rgba(255,255,255,.4);">12 cancelamentos × R$ 78</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">∞</div><div style="font-size:11px;color:rgba(255,255,255,.4);">Clientes que não voltam</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">+40%</div><div style="font-size:11px;color:rgba(255,255,255,.4);">Alta em cancelamentos</div></div>
+        </div>
+      </div>
       <div class="cta-eyebrow">Osasco Express × Meridio Pizza</div>
       <h2 class="cta-title">Seu pico de sexta<br><em>nunca mais vai travar.</em></h2>
       <p class="cta-desc">Escala confirmada, 2 entregadores na semana e 3 nos fins de semana para o início. Bag térmica e GPS ativo. Conforme a operação cresce, a escala cresce junto — você decide.</p>
