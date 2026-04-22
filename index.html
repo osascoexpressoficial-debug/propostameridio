@@ -5,7 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proposta — Osasco Express × Meridio Pizza</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,700;0,800;0,900;1,800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+╔══════════════════════════════════════════════════════════════════════╗
+║  OSASCO EXPRESS — TEMPLATE DE PROPOSTA COMERCIAL                    ║
+║  Versão: Meridio Pizza · Abril 2026                                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  REGRAS DO VENDEDOR SÊNIOR — OBRIGATÓRIO SEGUIR EM TODA PROPOSTA    ║
+║                                                                      ║
+║  1. FRASE DE OFERTA NO INÍCIO                                        ║
+║     Logo após o hero, antes de qualquer dado ou seção, uma frase     ║
+║     clara dizendo O QUE o cliente está comprando, em uma linha.      ║
+║     Formato: "Você contrata X + Y + Z por R$ [fixo]/mês + variável." ║
+║                                                                      ║
+║  2. HEADLINE ATACA O PROBLEMA REAL DO CLIENTE                        ║
+║     Nunca genérico. Usar dado concreto da operação dele.             ║
+║     Ex: "Seu pico de sexta nunca mais vai travar."                   ║
+║     Proibido: "Entrega profissional para seu negócio."               ║
+║                                                                      ║
+║  3. DADOS REAIS DO CLIENTE NO INÍCIO                                 ║
+║     Extraídos da planilha do iFood antes da visita.                  ║
+║     Mínimo 4 dados: 2 positivos (consolida) + 2 de risco (urgência). ║
+║     Nunca usar estimativas — só o que a planilha prova.              ║
+║                                                                      ║
+║  4. SEM REDUNDÂNCIA ENTRE SEÇÕES                                     ║
+║     Cada seção tem um único trabalho:                                ║
+║     - Solução: O QUE fazemos (4 itens max)                           ║
+║     - Escala: COMO funciona o sistema (só o painel, sem fluxo)       ║
+║     - Incluso: O QUE está no R$ 699                                  ║
+║     Nunca repetir o mesmo argumento em seções diferentes.            ║
+║                                                                      ║
+║  5. GARANTIA SEMPRE ANTES DO CTA FINAL                               ║
+║     Posicionada como selo visual destacado, não como texto corrido.  ║
+║     Remove o último obstáculo antes de o cliente apertar o botão.    ║
+║                                                                      ║
+║  6. CENÁRIOS DE CUSTO — DIREÇÃO CORRETA                              ║
+║     Frase obrigatória: "Em mês fraco você paga menos.                ║
+║     Em mês forte você já faturou mais."                              ║
+║     NUNCA: "o custo sobe quando você entrega mais."                  ║
+║                                                                      ║
+║  7. NOME "FOODY DELIVERY" NÃO APARECE NUNCA                         ║
+║     Usar sempre: "nossa plataforma de gestão" ou                     ║
+║     "sistema de gestão de entregas".                                 ║
+║                                                                      ║
+║  8. MOBILE FIRST — REGRAS DE RESPONSIVIDADE                         ║
+║     - Grids de 3 colunas → 1 coluna em mobile                       ║
+║     - Grids de 2 colunas → 1 coluna em mobile                       ║
+║     - Fontes de display (h1) → clamp mínimo 30px                    ║
+║     - Padding lateral → 20px em mobile (não 28px)                   ║
+║     - Botões hero → largura 100% em mobile                           ║
+║     - Painel da escala → fontes legíveis em tela pequena             ║
+║     - Cenários de custo → grid 1 col em mobile                       ║
+║     - Timeline Dia1/3/5 → grid 1 col em mobile                      ║
+║     - sticky CTA → sempre visível no mobile                          ║
+║                                                                      ║
+║  9. PROVA SOCIAL NO HERO (avatares R/M/P)                            ║
+║     Manter sempre. Atualizar iniciais conforme clientes ativos.      ║
+║                                                                      ║
+║  10. NÃO MOSTRAR CONDIÇÕES/MULTA/NÃO-ALICIAMENTO NA PROPOSTA        ║
+║      Esses itens ficam exclusivamente no contrato.                   ║
+║      A proposta vende. O contrato protege.                           ║
+╚══════════════════════════════════════════════════════════════════════╝
+-->
+
 <style>
+/* ─── TOKENS DE DESIGN — iFood palette ───────────────────────────────
+   Vermelho oficial iFood: #EA1D2C
+   Fontes: Nunito (títulos) + Inter (corpo)
+   Fundo base: #f5f5f5 (não usar amarelado/bone)
+   Cards: branco puro + sombra leve
+   Border radius: 8px padrão, 6px pequeno
+──────────────────────────────────────────────────────────────────── */
 :root{
   --red:#EA1D2C;--red-dark:#b8161e;--red-soft:#fff0f1;
   --ink:#1a1a1a;--ink-mid:#3d3d3d;--ink-light:#717171;
@@ -13,7 +83,8 @@
   --green:#3e7d32;--green-soft:#f0f7ee;
   --gold:#f5a623;--gold-soft:#fff8ec;
   --blue:#1976d2;--blue-soft:#e8f1fb;
-  --shadow:0 1px 8px rgba(0,0,0,.08),0 2px 20px rgba(0,0,0,.04);--r:8px;--r-sm:6px;
+  --shadow:0 1px 8px rgba(0,0,0,.08),0 2px 20px rgba(0,0,0,.04);
+  --r:8px;--r-sm:6px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -24,29 +95,32 @@ section{padding:64px 0;}
 .divider{height:1px;background:var(--border);}
 #pbar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:999;transition:width .1s linear;}
 
-/* HERO */
+/* HERO — fundo branco, gradiente sutil vermelho à direita */
 .hero{background:var(--white);padding:72px 0 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(215,38,56,.05) 100%);pointer-events:none;}
+.hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(234,29,44,.05) 100%);pointer-events:none;}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red) 0%,transparent 60%);}
 .eyebrow-hero{font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:28px;display:flex;align-items:center;gap:10px;}
 .eyebrow-hero::before{content:'';width:20px;height:1px;background:var(--red);}
-.hero h1{font-size:clamp(34px,5.5vw,54px);color:var(--ink);font-weight:900;letter-spacing:-.02em;margin-bottom:22px;max-width:560px;line-height:1.08;}
+/* REGRA: h1 do hero ataca o problema real — mínimo clamp(30px,...) */
+.hero h1{font-size:clamp(30px,5.5vw,54px);color:var(--ink);font-weight:900;letter-spacing:-.02em;margin-bottom:22px;max-width:560px;line-height:1.08;}
 .hero h1 em{font-style:italic;color:var(--red);}
-.hero-lead{font-size:15px;color:var(--ink-light);line-height:1.85;max-width:480px;margin-bottom:36px;}
+.hero-lead{font-size:15px;color:var(--ink-light);line-height:1.85;max-width:480px;margin-bottom:24px;}
 .hero-lead strong{color:var(--ink-mid);font-weight:700;}
-.hero-chips{display:flex;gap:10px;flex-wrap:wrap;}
-.chip{font-size:11px;font-weight:700;color:var(--ink-mid);background:var(--white);border:1.5px solid var(--border);padding:6px 14px;border-radius:20px;}
+/* FRASE DE OFERTA — obrigatória em toda proposta, logo após o lead */
+.oferta-linha{font-size:13px;font-weight:600;color:var(--ink-mid);background:var(--bone);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 16px;margin-bottom:28px;line-height:1.6;}
+.oferta-linha strong{color:var(--ink);}
 
-/* EYEBROW / TITLES */
+/* EYEBROW / TÍTULOS */
 .eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
 .eyebrow::before{content:'';width:16px;height:1px;background:var(--red);}
 .sec-title{font-size:clamp(22px,3.8vw,34px);font-weight:900;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px;line-height:1.12;}
 .sec-title em{font-style:italic;color:var(--red);}
 .sec-lead{font-size:14px;color:var(--ink-light);line-height:1.75;max-width:540px;margin-bottom:36px;}
 
-/* DADOS */
+/* DADOS — espelho da operação do cliente */
 .dados-bg{background:#fafafa;}
 .dados-intro{font-size:14px;color:var(--ink-light);line-height:1.75;margin-bottom:28px;padding:16px 20px;background:var(--white);border-radius:var(--r-sm);border-left:3px solid var(--red);}
+/* REGRA: sempre 2 cards positivos + 2 de risco (alert) */
 .dados-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .dado-card{border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;background:var(--white);position:relative;box-shadow:var(--shadow);}
 .dado-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0;background:var(--border);}
@@ -56,8 +130,8 @@ section{padding:64px 0;}
 .dado-card.alert::before{background:var(--red);}
 .dado-card.alert .dado-num{color:var(--red);}
 
-/* SOLUCAO */
-.solucao-bg{background:#fafafa;}
+/* SOLUÇÃO — máximo 4 itens, cada um com trabalho único */
+.solucao-bg{background:var(--white);}
 .solucao-items{display:flex;flex-direction:column;}
 .solucao-item{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border);}
 .solucao-item:last-child{border-bottom:none;}
@@ -67,13 +141,18 @@ section{padding:64px 0;}
 .solucao-desc{font-size:13px;color:var(--ink-light);line-height:1.7;}
 .solucao-tag{display:inline-block;margin-top:7px;font-size:10px;font-weight:700;color:var(--green);background:var(--green-soft);padding:2px 9px;border-radius:10px;}
 
-/* ESCALA PANEL */
+/* OPORTUNIDADE — bloco de contexto iFood */
+.oport-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;}
+.oport-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);}
+.oport-card.destaque{border:1.5px solid var(--red);}
+.oport-num{font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;}
+.oport-card.destaque .oport-num{color:var(--red);}
+.oport-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;}
+.oport-card.destaque .oport-label{color:var(--red);}
+.oport-desc{font-size:12px;color:var(--ink-light);line-height:1.5;}
+
+/* ESCALA — só o painel, sem fluxo redundante */
 .escala-bg{background:#fafafa;}
-.escala-flow{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
-.escala-step{display:flex;align-items:flex-start;gap:14px;}
-.escala-step-icon{width:36px;height:36px;border-radius:8px;background:var(--bone);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px;}
-.escala-step-body strong{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:1px;}
-.escala-step-body p{font-size:13px;color:var(--ink-light);line-height:1.55;}
 .escala-panel{background:var(--ink);border-radius:var(--r);overflow:hidden;}
 .escala-panel-head{padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;}
 .escala-panel-title{font-family:'Nunito',sans-serif;font-size:15px;color:var(--white);}
@@ -86,53 +165,27 @@ section{padding:64px 0;}
 .escala-turno{font-size:11px;color:rgba(255,255,255,.25);margin-top:1px;}
 .escala-badge{font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;}
 .escala-badge.ok{background:rgba(26,127,90,.2);color:#4ade80;}
-.escala-badge.fds{background:rgba(215,38,56,.18);color:#f87171;}
+.escala-badge.fds{background:rgba(234,29,44,.18);color:#f87171;}
 .escala-footer{padding:12px 22px;background:rgba(255,255,255,.02);display:flex;align-items:center;gap:8px;}
 .escala-footer-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;}
 .escala-footer-txt{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 
-/* INCLUSO */
-.incluso-bg{background:#fafafa;}
+/* INCLUSO — o que os R$ 699 compram */
+.incluso-bg{background:var(--white);}
 .incluso-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.incluso-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:18px;box-shadow:var(--shadow);}
+.incluso-item{background:var(--bone);border:1px solid var(--border);border-radius:var(--r-sm);padding:18px;}
 .incluso-icon{font-size:20px;margin-bottom:10px;}
 .incluso-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
 .incluso-desc{font-size:12px;color:var(--ink-light);line-height:1.55;}
 .incluso-tag{display:inline-block;margin-top:8px;font-size:10px;font-weight:700;color:var(--green);background:var(--green-soft);padding:2px 8px;border-radius:10px;}
 
-/* MKT */
-.mkt-bg{background:#fafafa;}
-.mkt-label{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:var(--white);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;}
-.mkt-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:18px;}
-.mkt-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 14px;text-align:center;}
-.mkt-card-icon{font-size:24px;margin-bottom:8px;}
-.mkt-card-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.mkt-card-desc{font-size:12px;color:var(--ink-light);line-height:1.55;}
-.mkt-insight{background:var(--gold-soft);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-sm);padding:14px 18px;font-size:13px;color:#7a5c00;line-height:1.6;}
-.mkt-insight strong{font-weight:700;}
-
-/* OCORRENCIAS */
-.ocorr-bg{background:#fafafa;}
-.ocorr-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
-.ocorr-head{background:var(--ink);padding:16px 22px;}
-.ocorr-head-title{font-family:'Nunito',sans-serif;font-size:15px;color:var(--white);}
-.ocorr-head-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px;}
-.ocorr-row{display:flex;align-items:center;gap:13px;padding:14px 22px;border-bottom:1px solid var(--border);}
-.ocorr-row:last-child{border-bottom:none;}
-.ocorr-icon{font-size:17px;flex-shrink:0;}
-.ocorr-text{font-size:13px;color:var(--ink-mid);line-height:1.5;}
-.ocorr-text strong{display:block;font-weight:700;color:var(--ink);margin-bottom:1px;}
-.ocorr-badge{margin-left:auto;font-size:10px;font-weight:700;color:var(--green);background:var(--green-soft);padding:3px 9px;border-radius:10px;white-space:nowrap;}
-.nota-box{background:var(--green-soft);border:1px solid rgba(26,127,90,.15);border-radius:var(--r-sm);padding:14px 18px;font-size:13px;color:var(--green);line-height:1.6;margin-top:14px;}
-.nota-box strong{font-weight:700;}
-
 /* DIÁRIAS */
 .diaria-bg{background:#fafafa;}
 .diaria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.diaria-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);}
+.diaria-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--white);}
 .diaria-head{padding:18px 22px;display:flex;align-items:center;gap:10px;}
 .diaria-head.blue{background:var(--blue-soft);border-bottom:1px solid rgba(26,86,219,.12);}
-.diaria-head.red{background:var(--red-soft);border-bottom:1px solid rgba(215,38,56,.12);}
+.diaria-head.red{background:var(--red-soft);border-bottom:1px solid rgba(234,29,44,.12);}
 .diaria-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 .diaria-dot.blue{background:var(--blue);}
 .diaria-dot.red{background:var(--red);}
@@ -145,11 +198,13 @@ section{padding:64px 0;}
 .diaria-val span{font-size:18px;font-weight:400;color:var(--ink-light);}
 .diaria-per{font-size:12px;color:var(--ink-light);margin-top:6px;}
 .diaria-dias{font-size:12px;font-weight:700;color:var(--ink-mid);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.nota-box{background:var(--green-soft);border:1px solid rgba(62,125,50,.15);border-radius:var(--r-sm);padding:14px 18px;font-size:13px;color:var(--green);line-height:1.6;margin-top:14px;}
+.nota-box strong{font-weight:700;}
 
 /* TAXAS KM */
-.taxas-bg{background:#fafafa;}
+.taxas-bg{background:var(--white);}
 .taxa-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.taxa-block{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
+.taxa-block{background:var(--bone);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
 .taxa-head{padding:14px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
 .taxa-head.blue{background:var(--blue-soft);}
 .taxa-head.red{background:var(--red-soft);}
@@ -167,7 +222,7 @@ section{padding:64px 0;}
 .taxa-row.peak .taxa-km{color:var(--red);}
 .taxa-km{color:var(--ink-light);font-weight:500;}
 .taxa-val{font-weight:700;color:var(--ink);}
-.frete-tip{margin-top:16px;background:var(--gold-soft);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-sm);padding:14px 18px;font-size:13px;color:#7a5c00;line-height:1.6;}
+.frete-tip{margin-top:16px;background:var(--gold-soft);border:1px solid rgba(245,166,35,.2);border-radius:var(--r-sm);padding:14px 18px;font-size:13px;color:#7a5c00;line-height:1.6;}
 .frete-tip strong{font-weight:700;}
 
 /* RESUMO */
@@ -188,31 +243,42 @@ section{padding:64px 0;}
 .rbadge{font-size:11px;color:var(--green);background:var(--green-soft);padding:4px 10px;border-radius:20px;font-weight:700;}
 .rbadge::before{content:'✓ ';}
 
-/* PLUS */
-.plus-bg{background:#fafafa;}
-.plus-intro{font-size:14px;color:var(--ink-light);line-height:1.75;margin-bottom:28px;padding:18px 22px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);border-left:3px solid var(--gold);}
-.plus-grid{display:flex;flex-direction:column;gap:12px;}
-.plus-item{background:var(--white);box-shadow:var(--shadow);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;}
-.plus-item-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.plus-item-desc{font-size:12px;color:var(--ink-light);line-height:1.6;}
-.plus-item-price{font-family:'Nunito',sans-serif;font-size:18px;font-weight:700;color:var(--ink);text-align:right;white-space:nowrap;}
-.plus-item-price small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-light);margin-top:2px;}
+/* CENÁRIOS — REGRA: frase direcionada para confiança, não defesa */
+.cenarios-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
+.cenario-col{padding:18px 20px;border-right:1px solid var(--border);}
+.cenario-col:last-child{border-right:none;}
+.cenario-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mid);margin-bottom:8px;}
+.cenario-val{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--ink);line-height:1;}
+.cenario-desc{font-size:11px;color:var(--ink-light);margin-top:6px;line-height:1.5;}
+.cenario-col.destaque{background:var(--red-soft);}
+.cenario-col.destaque .cenario-label{color:var(--red);}
+.cenario-col.destaque .cenario-val{color:var(--red);}
+/* REGRA FRASE: "Em mês fraco você paga menos. Em mês forte você já faturou mais." */
+.cenario-insight{padding:12px 20px;background:#fafafa;border-top:1px solid var(--border);font-size:12px;color:var(--ink-light);}
 
-/* CONDIÇÕES */
-.cond-bg{background:#fafafa;}
-.cond-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
-.cond-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 18px;}
-.cond-pill-label{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:4px;}
-.cond-pill-val{font-size:14px;font-weight:700;color:var(--ink);}
+/* TIMELINE DIA 1/3/5 */
+.timeline-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px;}
+.timeline-card{background:var(--bone);border-radius:var(--r);padding:22px 18px;}
+.timeline-card.destaque{background:var(--red-soft);border:1.5px solid rgba(234,29,44,.15);}
+.timeline-dia{font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.timeline-card.destaque .timeline-dia{color:var(--red);}
+.timeline-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.timeline-desc{font-size:12px;color:var(--ink-light);line-height:1.6;}
 
-/* CTA */
+/* GARANTIA — sempre antes do CTA, com destaque visual */
+.garantia-box{background:var(--green-soft);border:1.5px solid rgba(62,125,50,.2);border-radius:var(--r);padding:24px 28px;display:flex;align-items:flex-start;gap:16px;}
+.garantia-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+.garantia-title{font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;color:var(--green);margin-bottom:6px;}
+.garantia-desc{font-size:13px;color:#2d5a25;line-height:1.65;}
+
+/* CTA SECTION */
 .cta-section{background:var(--red);padding:72px 0;position:relative;overflow:hidden;}
 .cta-section::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
 .cta-section::after{content:'';position:absolute;bottom:-60px;left:-60px;width:250px;height:250px;border-radius:50%;background:rgba(0,0,0,.06);pointer-events:none;}
 .cta-inner{position:relative;z-index:1;text-align:center;}
 .cta-eyebrow{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:10px;}
 .cta-eyebrow::before,.cta-eyebrow::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(255,255,255,.2);}
-.cta-title{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;}
+.cta-title{font-family:'Nunito',sans-serif;font-size:clamp(26px,5vw,44px);font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;}
 .cta-title em{font-style:italic;color:rgba(255,255,255,.65);}
 .cta-desc{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8;max-width:420px;margin:0 auto 32px;}
 .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
@@ -226,6 +292,7 @@ section{padding:64px 0;}
 .val-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:4px;}
 .val-val{font-size:13px;font-weight:700;color:rgba(255,255,255,.75);}
 
+/* FOOTER */
 footer{background:var(--ink);padding:36px 0 24px;}
 .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;}
 .footer-brand{font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;}
@@ -240,237 +307,215 @@ footer{background:var(--ink);padding:36px 0 24px;}
 .footer-stamp{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:6px;}
 .footer-stamp::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);}
 
+/* STICKY MOBILE — sempre visível */
 .sticky{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--border);padding:12px 20px;z-index:500;box-shadow:0 -4px 24px rgba(0,0,0,.1);}
 .sticky a{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:var(--white);font-size:14px;font-weight:800;padding:14px;border-radius:10px;text-decoration:none;}
 
 .fade-up{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
 .fade-up.in{opacity:1;transform:translateY(0);}
 
+/* ─── MOBILE FIRST — 580px ────────────────────────────────────────
+   REGRA: todos os grids colapsam para 1 coluna
+   Padding lateral reduz para 20px
+   Botões ficam 100% de largura
+   Fontes display mantêm legibilidade (clamp já cuida)
+────────────────────────────────────────────────────────────────── */
 @media(max-width:580px){
   section{padding:48px 0;}
-  .diaria-grid,.taxa-grid,.dados-grid,.mkt-cards,.incluso-grid,.footer-grid{grid-template-columns:1fr;}
-  .plus-item{grid-template-columns:1fr;}
+  .wrap{padding:0 20px;}
+
+  /* Grids → 1 coluna */
+  .dados-grid,
+  .diaria-grid,
+  .taxa-grid,
+  .incluso-grid,
+  .footer-grid,
+  .oport-grid,
+  .timeline-grid{grid-template-columns:1fr;}
+
+  /* Cenários de custo → empilhados */
+  .cenarios-grid{grid-template-columns:1fr;}
+  .cenario-col{border-right:none;border-bottom:1px solid var(--border);}
+  .cenario-col:last-child{border-bottom:none;}
+
+  /* Hero: botão full width */
+  .hero-cta-wrap{display:flex;flex-direction:column;gap:10px;}
+  .hero-cta-wrap a{width:100%;justify-content:center;}
+  .hero-tel{display:block;text-align:center;margin-left:0 !important;margin-top:4px;}
+
+  /* Solução: número menor em mobile */
+  .solucao-item{grid-template-columns:40px 1fr;gap:14px;}
+  .solucao-num{width:40px;height:40px;}
+  .solucao-num span{font-size:16px;}
+
+  /* Painel da escala: fonte legível */
+  .escala-panel-title{font-size:13px;}
+  .escala-name{font-size:12px;}
+  .escala-badge{font-size:9px;padding:3px 8px;}
+
+  /* Resumo: valores menores */
+  .resumo-val{font-size:17px;}
+  .resumo-row.total .resumo-val{font-size:22px;}
+
+  /* Garantia: empilhada */
+  .garantia-box{flex-direction:column;gap:10px;padding:20px;}
+
+  /* CTA botões: full width */
+  .cta-buttons{flex-direction:column;align-items:center;}
+  .btn-main,.btn-secondary{width:100%;max-width:320px;justify-content:center;}
+
+  /* Validity bar: 2 por linha */
+  .validity-bar{gap:16px;}
+  .val-item{min-width:calc(50% - 8px);}
+
+  /* Sticky: sempre visível */
   .sticky{display:block;}
+
+  /* Timeline: cards menores */
+  .timeline-card{padding:18px 16px;}
+  .timeline-dia{font-size:26px;}
+
+  /* Diárias: valor menor */
+  .diaria-val{font-size:36px;}
+
+  /* Plus items: empilhados */
+  .plus-item-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 <div id="pbar"></div>
 
-<!-- HERO -->
+<!-- ══ HERO ══════════════════════════════════════════════════════════
+     REGRA: headline ataca o problema real do cliente, com dado concreto.
+     Lead menciona pelo menos 1 número real da operação.
+     Frase de oferta logo abaixo: o que o cliente está comprando.
+     Prova social (avatares) + botão WhatsApp clicável no próprio hero.
+═══════════════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow-hero">Proposta Comercial · Osasco Express × Meridio Pizza</div>
     <h1>Seu pico de sexta<br><em>nunca mais vai travar.</em></h1>
     <p class="hero-lead">
-      Você construiu o Meridio. Em fevereiro foram <strong>1.021 pedidos</strong> — e em março mais <strong>1.042</strong>. O bimestre bateu <strong>R$ 161.504</strong> em faturamento. A operação cresce. A cobertura de entrega ainda não acompanha.
+      Toda sexta às 20h os pedidos chegam rápido demais para um entregador só dar conta. Com a Osasco Express, você tem escala confirmada, bag térmica e GPS ativo antes de o turno começar. <strong>A entrega vira estrutura, não improviso.</strong>
     </p>
-    <div class="hero-chips">
-      <span class="chip">2 entregadores na semana · 3 no fds</span>
-      <span class="chip">escala cresce com a operação</span>
-      <span class="chip">18h – 24h · todos os dias</span>
-      <span class="chip">+entregador em 72h · mesmo valor</span>
-      <span class="chip">Válida por 10 dias</span>
-    </div>
-    <div style="margin-top:16px;display:flex;align-items:center;gap:10px;">
-      <div style="display:flex;gap:-4px;">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--red);border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">R</div>
-        <div style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;margin-left:-8px;">M</div>
-        <div style="width:28px;height:28px;border-radius:50%;background:#1976d2;border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;margin-left:-8px;">P</div>
+
+    <!-- Prova social — atualizar número e iniciais conforme clientes ativos -->
+    <div style="margin-bottom:28px;display:flex;align-items:center;gap:12px;">
+      <div style="display:flex;">
+        <div style="width:30px;height:30px;border-radius:50%;background:var(--red);border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">R</div>
+        <div style="width:30px;height:30px;border-radius:50%;background:#1a1a1a;border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;margin-left:-8px;">M</div>
+        <div style="width:30px;height:30px;border-radius:50%;background:var(--blue);border:2px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;margin-left:-8px;">P</div>
       </div>
-      <span style="font-size:12px;color:var(--ink-light);">Operamos em restaurantes de Osasco e região. Cada cliente ativo é referência disponível.</span>
+      <span style="font-size:12px;color:var(--ink-light);line-height:1.5;"><strong style="color:var(--ink-mid);">+3 restaurantes em Osasco</strong> recebem a escala toda semana.<br>Cada um disponível como referência.</span>
     </div>
-    <div style="margin-top:28px;">
-      <a href="https://wa.me/5511970334125?text=Olá%2C+quero+conversar+sobre+a+proposta+Osasco+Express+para+o+Meridio+Pizza" style="display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;padding:14px 28px;border-radius:50px;text-decoration:none;box-shadow:0 4px 18px rgba(234,29,44,.3);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(234,29,44,.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(234,29,44,.3)'">
+
+    <div class="hero-cta-wrap" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <a href="https://wa.me/5511970334125?text=Olá%2C+quero+conversar+sobre+a+proposta+Osasco+Express+para+o+Meridio+Pizza"
+         style="display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;padding:14px 28px;border-radius:50px;text-decoration:none;box-shadow:0 4px 18px rgba(234,29,44,.3);transition:transform .2s,box-shadow .2s;"
+         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(234,29,44,.35)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(234,29,44,.3)'">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17 10.5A7 7 0 1 1 3 10.5c0-1.4.4-2.7 1.1-3.8L3 3l3.9 1c1-.6 2.1-1 3.1-1a7 7 0 0 1 7 7z" stroke="currentColor" stroke-width="1.8"/></svg>
         Falar agora
       </a>
-      <span style="display:inline-block;margin-left:14px;font-size:12px;color:var(--ink-light);vertical-align:middle;">(11) 97033-4125</span>
+      <span class="hero-tel" style="font-size:12px;color:var(--ink-light);">(11) 97033-4125</span>
     </div>
   </div>
 </section>
 
-<!-- ESPELHO DA OPERAÇÃO -->
+<!-- ══ DADOS — espelho da operação ═══════════════════════════════════
+     REGRA: mínimo 2 cards positivos + 2 cards alert (risco).
+     Só dados que a planilha do iFood prova. Zero estimativas.
+═══════════════════════════════════════════════════════════════════ -->
 <section class="dados-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Sua operação em números</div>
     <h2 class="sec-title fade-up">O que os dados<br><em>mostram de verdade.</em></h2>
     <div class="dados-intro fade-up">
-      Analisamos seu histórico completo de fevereiro e março de 2026. Dois meses, dois retratos. Os números são reais — e eles mostram onde a operação precisa de estrutura para não deixar dinheiro na mesa.
+      Analisamos seu histórico de fevereiro de 2026. Esses números são reais e mostram onde a operação precisa de estrutura.
     </div>
-    <!-- TABS -->
-    <div class="fade-up" style="display:flex;gap:8px;margin-bottom:20px;">
-      <button onclick="showMes('fev')" id="tab-fev" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--red);background:var(--red);color:#fff;cursor:pointer;transition:all .2s;">Fevereiro 2026</button>
-      <button onclick="showMes('mar')" id="tab-mar" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--ink-mid);cursor:pointer;transition:all .2s;">Março 2026</button>
-      <button onclick="showMes('bim')" id="tab-bim" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--ink-mid);cursor:pointer;transition:all .2s;">Bimestre</button>
-    </div>
-
-    <!-- FEVEREIRO -->
-    <div id="mes-fev" class="dados-grid">
+    <div class="dados-grid fade-up">
       <div class="dado-card">
         <div class="dado-num">1.021</div>
         <div class="dado-label">Pedidos em fevereiro</div>
-        <div class="dado-desc">42 pedidos por dia em média. Uma operação consolidada que merece uma logística à altura.</div>
+        <div class="dado-desc">42 pedidos por dia em média. Uma operação madura que merece uma logística à altura do volume.</div>
       </div>
       <div class="dado-card">
         <div class="dado-num">R$ 79</div>
         <div class="dado-label">Ticket médio</div>
-        <div class="dado-desc">Clientes que pagam bem e esperam produto na temperatura certa. Granja Viana e Santa Maria concentram os maiores volumes.</div>
+        <div class="dado-desc">Clientes que pagam bem e esperam produto na temperatura certa. Granja Viana e Jardim Barbacena concentram os pedidos de maior valor.</div>
       </div>
       <div class="dado-card alert">
         <div class="dado-num">14</div>
         <div class="dado-label">Pedidos em 30 minutos</div>
-        <div class="dado-desc">13/02, entre 20h00 e 20h29. Um único entregador não dá conta — matematicamente impossível sem fila de espera.</div>
+        <div class="dado-desc">13/02, entre 20h00 e 20h29. Um único entregador não dá conta. Matematicamente impossível sem fila de espera.</div>
       </div>
       <div class="dado-card alert">
         <div class="dado-num">3×</div>
         <div class="dado-label">Cancelamentos seguidos</div>
-        <div class="dado-desc">13/02, 19h31 a 19h59 — três clientes desistiram em sequência no maior dia do mês. Pico sem cobertura.</div>
-      </div>
-    </div>
-
-    <!-- MARÇO -->
-    <div id="mes-mar" class="dados-grid" style="display:none;">
-      <div class="dado-card">
-        <div class="dado-num">1.042</div>
-        <div class="dado-label">Pedidos em março</div>
-        <div class="dado-desc">+21 pedidos a mais que fevereiro. A demanda cresceu — e o pico de 07/03 mostrou que a operação ainda trava nos momentos certos.</div>
-      </div>
-      <div class="dado-card">
-        <div class="dado-num">R$ 78</div>
-        <div class="dado-label">Ticket médio</div>
-        <div class="dado-desc">Consistência de ticket alto mês a mês. Cliente fiel, pedido recorrente. A base está construída — o que falta é entrega confiável.</div>
-      </div>
-      <div class="dado-card alert">
-        <div class="dado-num">19</div>
-        <div class="dado-label">Pedidos em 30 minutos</div>
-        <div class="dado-desc">27/03, das 19h33 às 20h02 — 19 pedidos simultâneos. Pior janela do bimestre inteiro. Sem cobertura paralela, isso é fila ou cancelamento.</div>
-      </div>
-      <div class="dado-card alert">
-        <div class="dado-num">7×</div>
-        <div class="dado-label">Cancelamentos em março</div>
-        <div class="dado-desc">Todos por "cancelamento genérico" do iFood — 5 deles entre 18h e 22h, no coração do pico. Padrão que se repete toda semana.</div>
-      </div>
-    </div>
-
-    <!-- BIMESTRE -->
-    <div id="mes-bim" class="dados-grid" style="display:none;">
-      <div class="dado-card" style="border-top:3px solid var(--gold);">
-        <div class="dado-num" style="color:var(--gold);">R$ 161k</div>
-        <div class="dado-label">Faturamento no bimestre</div>
-        <div class="dado-desc">R$ 161.504 em fev+mar. Uma operação que fatura R$ 80 mil por mês precisa de logística profissional — não de sorte na escala.</div>
-      </div>
-      <div class="dado-card" style="border-top:3px solid var(--gold);">
-        <div class="dado-num" style="color:var(--gold);">2.063</div>
-        <div class="dado-label">Pedidos no bimestre</div>
-        <div class="dado-desc">Dois meses, dois mil pedidos. A operação não é pequena — ela já tem escala para exigir estrutura dedicada de entrega.</div>
-      </div>
-      <div class="dado-card" style="border-top:3px solid var(--gold);">
-        <div class="dado-num" style="color:var(--gold);">1.350</div>
-        <div class="dado-label">Clientes únicos</div>
-        <div class="dado-desc">1.350 pessoas diferentes pediram no bimestre. Cada entrega mal feita é uma relação que começa mal — ou que termina antes da hora.</div>
-      </div>
-      <div class="dado-card alert">
-        <div class="dado-num">12×</div>
-        <div class="dado-label">Cancelamentos no bimestre</div>
-        <div class="dado-desc">5 em fevereiro, 7 em março. A tendência é de alta. Cada mês sem estrutura própria, mais cancelamentos — e mais receita que vai embora.</div>
-      </div>
-    </div>
-
-    <script>
-    function showMes(m){
-      ['fev','mar','bim'].forEach(function(x){
-        document.getElementById('mes-'+x).style.display = x===m ? 'grid' : 'none';
-        var t = document.getElementById('tab-'+x);
-        if(x===m){t.style.background='var(--red)';t.style.color='#fff';t.style.borderColor='var(--red)';}
-        else{t.style.background='var(--white)';t.style.color='var(--ink-mid)';t.style.borderColor='var(--border)';}
-      });
-    }
-    </script>
-  </div>
-</section>
-<div class="divider"></div>
-
-<!-- TENDÊNCIA CRESCIMENTO -->
-<section style="background:var(--white);padding:48px 0;">
-  <div class="wrap">
-    <div class="eyebrow fade-up">Tendência dos dados</div>
-    <h2 class="sec-title fade-up">Março foi maior.<br><em>Abril vai ser maior ainda.</em></h2>
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--green);line-height:1;margin-bottom:6px;">+21</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:4px;">Pedidos a mais em março</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Crescimento de fev para mar, sem nenhuma mudança estrutural.</div>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--red);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--red);line-height:1;margin-bottom:6px;">19</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:4px;">Pedidos em 30 min (mar)</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Recorde do bimestre. Foi em 27/03 às 19h33. Vai acontecer de novo.</div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">+40%</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;">Mais cancelamentos</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">5 em fev → 7 em mar. A tendência é clara se nada mudar.</div>
-      </div>
-    </div>
-    <div class="fade-up" style="background:var(--ink);border-radius:var(--r);padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;">
-      <div style="font-size:36px;">📈</div>
-      <div>
-        <div style="font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:var(--white);margin-bottom:6px;">Sua operação cresce. Seus riscos também.</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;">Em dois meses você processou 2.063 pedidos e R$ 161.504. Cada pedido que cancela no pico custa em média R$ 78 — mas o custo real é o cliente que não volta. Estrutura de entrega não é gasto: é proteção do que você já construiu.</div>
+        <div class="dado-desc">13/02, entre 19h31 e 19h59. Três clientes desistiram em sequência no maior dia do mês. O pico travou sem cobertura.</div>
       </div>
     </div>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- OPORTUNIDADE -->
-<section style="background:#fafafa;">
+<!-- ══ OPORTUNIDADE — contexto iFood ═════════════════════════════════
+     REGRA: posicionada ANTES da solução.
+     Mostra o que está em jogo além do problema de entrega.
+     Argumento de canal direto vs. iFood.
+═══════════════════════════════════════════════════════════════════ -->
+<section style="background:var(--white);">
   <div class="wrap">
     <div class="eyebrow fade-up">O que está em jogo</div>
-    <h2 class="sec-title fade-up" style="max-width:480px;">A maioria dos seus clientes<br><em>não sabe seu nome.</em></h2>
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">1.350</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;">Clientes únicos</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">No bimestre de fev–mar 2026</div>
+    <h2 class="sec-title fade-up">A maioria dos seus clientes<br><em>não conhece o Meridio.</em></h2>
+    <div class="oport-grid fade-up">
+      <div class="oport-card">
+        <div class="oport-num">1.300+</div>
+        <div class="oport-label">Clientes únicos</div>
+        <div class="oport-desc">No bimestre fev–mar 2026</div>
       </div>
-      <div style="background:var(--white);border:1.5px solid var(--red);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--red);line-height:1;margin-bottom:6px;">72%</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:4px;">Compraram só uma vez</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Vieram por promoção. Não voltaram.</div>
+      <div class="oport-card destaque">
+        <div class="oport-num">72%</div>
+        <div class="oport-label">Compraram só uma vez</div>
+        <div class="oport-desc">Vieram pela promoção. Não voltaram.</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow);">
-        <div style="font-family:'Nunito',sans-serif;font-size:38px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:6px;">0</div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mid);margin-bottom:4px;">Contato direto</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">O iFood não passa o cliente para você.</div>
+      <div class="oport-card">
+        <div class="oport-num">0</div>
+        <div class="oport-label">Contato direto</div>
+        <div class="oport-desc">O iFood nunca passa o cliente para você.</div>
       </div>
     </div>
-    <div class="fade-up" style="background:var(--white);border-left:4px solid var(--red);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:18px 22px;font-size:14px;color:var(--ink-mid);line-height:1.7;box-shadow:var(--shadow);">
-      <strong style="color:var(--ink);">Com entrega própria, cada corrida vira contato direto.</strong> Flyer na bag, QR Code na embalagem, pizza quente na temperatura certa — o cliente passa a saber quem é o Meridio, não só qual app usou. Em dois meses você atendeu 1.350 pessoas diferentes. Quantas sabem o seu número? Isso é o que o iFood não pode vender para você.
+    <div class="fade-up" style="background:var(--bone);border-left:4px solid var(--red);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:18px 22px;font-size:14px;color:var(--ink-mid);line-height:1.7;">
+      <strong style="color:var(--ink);">Aquele cliente que pediu uma vez e sumiu nunca recebeu um motivo para voltar.</strong> Com entrega própria, cada caixa pode trazer esse motivo — um cupom, um QR Code, uma mensagem. Nosso time ajuda a estruturar isso junto com você.
     </div>
   </div>
 </section>
+<div class="divider"></div>
 
+<!-- ══ SOLUÇÃO ════════════════════════════════════════════════════════
+     REGRA: máximo 4 itens. Cada item com trabalho único.
+     Não repetir aqui o que a seção de escala vai mostrar.
+═══════════════════════════════════════════════════════════════════ -->
 <section class="solucao-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Como resolvemos</div>
     <h2 class="sec-title fade-up">Estrutura real.<br><em>Cada item tem motivo.</em></h2>
-    <p class="sec-lead fade-up">Não é promessa — é o que a operação exige para funcionar no pico sem travar.</p>
+    <p class="sec-lead fade-up">Não é promessa. É o que a operação exige para funcionar no pico sem travar.</p>
     <div class="solucao-items fade-up">
       <div class="solucao-item">
         <div class="solucao-num"><span>1</span></div>
         <div>
           <div class="solucao-title">Escala confirmada antes da semana começar</div>
-          <div class="solucao-desc">Cada entregador confirma presença individualmente no sistema. Você recebe a escala via WhatsApp com nomes e turnos antes do domingo acabar. Se alguém cancela, a vaga abre automaticamente — a gestão aciona cobertura antes do turno, não durante.</div>
+          <div class="solucao-desc">Cada entregador confirma presença individualmente no sistema. Você recebe a escala via WhatsApp com nomes e turnos antes de a semana começar. Se alguém cancela, a vaga abre automaticamente e a gestão aciona cobertura antes do turno começar.</div>
           <span class="solucao-tag">Toda semana</span>
         </div>
       </div>
       <div class="solucao-item">
         <div class="solucao-num"><span>2</span></div>
         <div>
-          <div class="solucao-title">Início com 2 na semana e 3 no fim de semana — escala que cresce com você</div>
-          <div class="solucao-desc">Começamos com 2 entregadores de segunda a quinta e 3 de sexta a domingo — cobertura real no pico. Esse número não é fixo: conforme a operação amadurece, ajustamos juntos. Precisa de mais ou menos em qualquer dia? Avisa com 72h e a escala muda.</div>
+          <div class="solucao-title">2 na semana, 3 no fim de semana: escala que cresce com você</div>
+          <div class="solucao-desc">Começamos com 2 entregadores de segunda a quinta e 3 de sexta a domingo. Esse número não é fixo. Conforme a operação cresce, ajustamos juntos. Precisa de mais ou menos em qualquer dia? Avisa com 72 horas de antecedência e a escala já muda.</div>
           <span class="solucao-tag">Sex · Sáb · Dom</span>
         </div>
       </div>
@@ -478,15 +523,15 @@ footer{background:var(--ink);padding:36px 0 24px;}
         <div class="solucao-num"><span>3</span></div>
         <div>
           <div class="solucao-title">Bag térmica + GPS + despacho automático</div>
-          <div class="solucao-desc">Bag térmica para pizza em todas as corridas. GPS ativo do início ao fim do turno com link de rastreamento para o cliente. O sistema distribui os pedidos entre os entregadores disponíveis, calcula a melhor rota e otimiza corridas simultâneas — sem intervenção manual.</div>
+          <div class="solucao-desc">Bag térmica para pizza em todas as corridas. GPS ativo com link de rastreamento para o cliente. O sistema de gestão distribui os pedidos entre os entregadores disponíveis, calcula a melhor rota e otimiza corridas simultâneas. Sem nenhuma intervenção manual.</div>
           <span class="solucao-tag">Padrão da operação</span>
         </div>
       </div>
       <div class="solucao-item">
         <div class="solucao-num"><span>4</span></div>
         <div>
-          <div class="solucao-title">Ocorrências registradas — você tem voz</div>
-          <div class="solucao-desc">Atraso, comportamento inadequado ou problema com entrega são registrados pela loja via planilha online. A gestão apura e responde. Nada fica sem posicionamento.</div>
+          <div class="solucao-title">Ocorrências registradas: você tem voz</div>
+          <div class="solucao-desc">Atraso, comportamento inadequado ou problema na entrega são registrados pela loja via planilha online. A gestão apura e responde. Nenhuma ocorrência fica sem posicionamento.</div>
           <span class="solucao-tag">Canal direto</span>
         </div>
       </div>
@@ -495,28 +540,15 @@ footer{background:var(--ink);padding:36px 0 24px;}
 </section>
 <div class="divider"></div>
 
-<!-- ESCALA -->
+<!-- ══ ESCALA — só o painel ══════════════════════════════════════════
+     REGRA: sem o fluxo de 3 passos (redundante com item 1 da solução).
+     Só o painel visual com "TO DENTRO" — prova concreta do sistema.
+═══════════════════════════════════════════════════════════════════ -->
 <section class="escala-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Escala semanal</div>
     <h2 class="sec-title fade-up">Você sabe quem chega<br><em>antes de a semana começar.</em></h2>
-    <p class="sec-lead fade-up">Confirmação individual por entregador. Vaga aberta aciona cobertura automática. Escala enviada no WhatsApp — não na hora do pico.</p>
-
-    <div class="escala-flow fade-up">
-      <div class="escala-step">
-        <div class="escala-step-icon">📅</div>
-        <div class="escala-step-body"><strong>Montagem da escala</strong><p>Entregadores notificados para confirmar presença por turno e por cliente.</p></div>
-      </div>
-      <div class="escala-step">
-        <div class="escala-step-icon">✅</div>
-        <div class="escala-step-body"><strong>Confirmação individual</strong><p>Cada entregador acessa o sistema e confirma. Quem cancela abre a vaga automaticamente — gestão avisada na hora.</p></div>
-      </div>
-      <div class="escala-step">
-        <div class="escala-step-icon">📲</div>
-        <div class="escala-step-body"><strong>Você recebe a escala fechada</strong><p>Via WhatsApp, com nomes e status antes de a semana começar. Nunca na véspera, nunca no turno.</p></div>
-      </div>
-    </div>
-
+    <p class="sec-lead fade-up">Cada entregador confirma individualmente. Vaga aberta aciona cobertura automática. A escala chega no WhatsApp antes de a semana começar.</p>
     <div class="escala-panel fade-up">
       <div class="escala-panel-head">
         <div>
@@ -549,17 +581,20 @@ footer{background:var(--ink);padding:36px 0 24px;}
 </section>
 <div class="divider"></div>
 
-<!-- INCLUSO -->
+<!-- ══ INCLUSO — o que os R$ 699 compram ═════════════════════════════
+     REGRA: NUNCA mencionar nome "Foody Delivery" — usar
+     "sistema de gestão de entregas" ou "nossa plataforma".
+═══════════════════════════════════════════════════════════════════ -->
 <section class="incluso-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Incluso na taxa de gestão</div>
     <h2 class="sec-title fade-up">Tudo que roda<br><em>por baixo</em> da operação.</h2>
-    <p class="sec-lead fade-up">A taxa de R$ 699 não é só administração — é a estrutura que garante que a entrega funciona mesmo quando dá problema. Tudo roda na plataforma Foody Delivery, integrada ao Web Cardápio: despacho automático, GPS real e histórico completo de cada corrida.</p>
+    <p class="sec-lead fade-up">A taxa de R$ 699 não é só administração. É a estrutura que garante que a entrega funciona mesmo quando dá problema.</p>
     <div class="incluso-grid fade-up">
       <div class="incluso-item">
         <div class="incluso-icon">📍</div>
         <div class="incluso-title">Rastreamento GPS em tempo real</div>
-        <div class="incluso-desc">Você e o cliente sabem onde está o pedido. Link de rastreamento disponível a qualquer momento do turno.</div>
+        <div class="incluso-desc">Você e o cliente acompanham cada pedido em tempo real. Link de rastreamento disponível do início ao fim do turno.</div>
         <span class="incluso-tag">Ativo na operação</span>
       </div>
       <div class="incluso-item">
@@ -589,7 +624,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
       <div class="incluso-item">
         <div class="incluso-icon">💬</div>
         <div class="incluso-title">Suporte humano no turno</div>
-        <div class="incluso-desc">Canal direto com a equipe durante toda a operação. Pessoa real — não bot, não formulário.</div>
+        <div class="incluso-desc">Canal direto com a equipe durante toda a operação. Pessoa real, não bot, não formulário.</div>
         <span class="incluso-tag">Resposta em minutos</span>
       </div>
     </div>
@@ -597,22 +632,17 @@ footer{background:var(--ink);padding:36px 0 24px;}
 </section>
 <div class="divider"></div>
 
-
-
-<!-- DIÁRIAS -->
+<!-- ══ DIÁRIAS ════════════════════════════════════════════════════ -->
 <section class="diaria-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">O que você paga por entregador</div>
-    <h2 class="sec-title fade-up">Diária por entregador.<br><em>Turno fixo.</em> Valor claro.</h2>
-    <p class="sec-lead fade-up">Semana tem um valor, fim de semana e feriado tem outro. Nas sextas, sábados e domingos a escala já vem com três entregadores — sem custo de solicitação extra.</p>
+    <h2 class="sec-title fade-up">Diária por entregador.<br><em>Turno fixo. Valor claro.</em></h2>
+    <p class="sec-lead fade-up">Semana tem um valor, fim de semana e feriado têm outro. Nos fins de semana a escala já vem com três entregadores, sem custo de solicitação extra.</p>
     <div class="diaria-grid fade-up">
       <div class="diaria-card">
         <div class="diaria-head blue">
           <div class="diaria-dot blue"></div>
-          <div>
-            <div class="diaria-head-title blue">Semana</div>
-            <div class="diaria-head-sub">Segunda a Quinta</div>
-          </div>
+          <div><div class="diaria-head-title blue">Semana</div><div class="diaria-head-sub">Segunda a Quinta</div></div>
         </div>
         <div class="diaria-body">
           <div class="diaria-val">R$ 60<span>/dia</span></div>
@@ -623,10 +653,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
       <div class="diaria-card">
         <div class="diaria-head red">
           <div class="diaria-dot red"></div>
-          <div>
-            <div class="diaria-head-title red">Fim de semana + Feriado</div>
-            <div class="diaria-head-sub">Sexta · Sábado · Domingo · Feriados nacionais, municipais e estaduais</div>
-          </div>
+          <div><div class="diaria-head-title red">Fim de semana + Feriado</div><div class="diaria-head-sub">Sexta · Sábado · Domingo · Feriados</div></div>
         </div>
         <div class="diaria-body">
           <div class="diaria-val">R$ 65<span>/dia</span></div>
@@ -636,26 +663,24 @@ footer{background:var(--ink);padding:36px 0 24px;}
       </div>
     </div>
     <div class="nota-box fade-up">
-      <strong>Precisa de mais entregadores?</strong> Avisa com 72h de antecedência. A gente insere na escala — pelo mesmo valor da tabela, sem renegociação, sem taxa de inclusão.
+      <strong>Precisa de reforço?</strong> Avisa com 72 horas de antecedência. A gente insere na escala pelo mesmo valor da tabela, sem renegociação e sem taxa de inclusão.
     </div>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- TAXAS KM -->
+<!-- ══ TAXAS KM ═══════════════════════════════════════════════════ -->
 <section class="taxas-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Taxa de corrida por km</div>
     <h2 class="sec-title fade-up">Você paga pelo<br><em>km percorrido</em> de verdade.</h2>
-    <p class="sec-lead fade-up">A maioria das entregas do Meridio fica entre <strong>1 e 5 km</strong> — o que representa <strong>mais de 75% do volume</strong>. Para esses bairros, a taxa vai de R$ 6 a R$ 10 por corrida. A tabela completa está abaixo.</p>
+    <p class="sec-lead fade-up">A maioria das entregas do Meridio fica entre <strong>1 e 5 km</strong>, o que representa mais de 75% do volume. Para esses bairros, a taxa vai de R$ 6 a R$ 10 por corrida.</p>
     <div class="taxa-grid fade-up">
       <div class="taxa-block">
         <div class="taxa-head blue">
           <div class="taxa-head-dot blue"></div>
-          <div class="taxa-head-info">
-            <div class="taxa-head-label blue">⚡ Semana</div>
-            <div class="taxa-head-dias">Segunda a Quinta</div>
-          </div>
+          <div class="taxa-head-label blue">⚡ Semana</div>
+          <div class="taxa-head-dias" style="margin-left:4px;">Segunda a Quinta</div>
         </div>
         <div class="taxa-row"><span class="taxa-km">1 km</span><span class="taxa-val">R$ 6,00</span></div>
         <div class="taxa-row"><span class="taxa-km">2 km</span><span class="taxa-val">R$ 6,00</span></div>
@@ -673,10 +698,8 @@ footer{background:var(--ink);padding:36px 0 24px;}
       <div class="taxa-block">
         <div class="taxa-head red">
           <div class="taxa-head-dot red"></div>
-          <div class="taxa-head-info">
-            <div class="taxa-head-label red">🌟 Fim de semana + Feriado</div>
-            <div class="taxa-head-dias">Sexta · Sábado · Domingo</div>
-          </div>
+          <div class="taxa-head-label red">🌟 Fim de semana</div>
+          <div class="taxa-head-dias" style="margin-left:4px;">Sexta · Sábado · Domingo</div>
         </div>
         <div class="taxa-row"><span class="taxa-km">1 km</span><span class="taxa-val">R$ 8,00</span></div>
         <div class="taxa-row"><span class="taxa-km">2 km</span><span class="taxa-val">R$ 8,00</span></div>
@@ -694,45 +717,50 @@ footer{background:var(--ink);padding:36px 0 24px;}
       </div>
     </div>
     <div class="frete-tip fade-up">
-      💡 <strong>Você pode cobrar taxa de entrega do cliente.</strong> R$ 5 a R$ 8 de frete é prática comum no iFood — cobre boa parte do custo da corrida. Você decide se cobra ou não.
+      💡 <strong>Você pode cobrar taxa de entrega do cliente.</strong> R$ 5 a R$ 8 de frete é prática comum no iFood e cobre boa parte do custo da corrida. Você decide se cobra ou não.
     </div>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- RESUMO -->
+<!-- ══ RESUMO ═════════════════════════════════════════════════════ -->
 <section class="resumo-bg">
   <div class="wrap">
     <div class="eyebrow fade-up">Resumo do investimento</div>
     <h2 class="sec-title fade-up">O que você investe<br><em>por mês.</em></h2>
+    <!-- FRASE DE OFERTA — contexto correto: junto ao preço, não no hero -->
+    <div class="oferta-linha fade-up">
+      Você contrata <strong>entregadores gerenciados, escala confirmada toda semana e tecnologia de despacho automático</strong> por <strong>R$ 699/mês</strong> de gestão, mais diária por entregador e taxa por km real percorrido.
+    </div>
+
     <div class="resumo-box fade-up">
       <div class="resumo-head">
         <div class="resumo-head-title">O que você investe por mês</div>
         <div class="resumo-head-sub">Turno 18h–24h · todos os dias · valores aproximados</div>
       </div>
       <div class="resumo-row">
-        <div>
+        <div class="resumo-label">
           <strong>Diárias dos entregadores</strong>
-          <small>Início: Seg–Qui 2 entregadores × R$ 60 · Sex–Dom+Fer 3 × R$ 65<br>Escala ajustável para mais ou menos conforme a operação evolui</small>
+          <small>Início: Seg–Qui 2 entregadores × R$ 60 · Sex–Dom+Fer 3 × R$ 65<br>Escala ajustável conforme a operação evolui</small>
         </div>
         <div class="resumo-val">≈ R$ 3.780</div>
       </div>
       <div class="resumo-row">
-        <div>
+        <div class="resumo-label">
           <strong>Taxas de corrida por km</strong>
-          <small>Cobradas pelo km real percorrido em cada entrega<br>Varia conforme distância e dia da semana</small>
+          <small>Pelo km real percorrido em cada entrega<br>Varia conforme distância e dia da semana</small>
         </div>
         <div class="resumo-val">≈ R$ 2.900</div>
       </div>
       <div class="resumo-row">
-        <div>
-          <strong>Taxa de gestão — Osasco Express</strong>
-          <small>Gestão logística, escala, GPS, despacho automático, suporte, relatório e nota fiscal</small>
+        <div class="resumo-label">
+          <strong>Taxa de gestão · Osasco Express</strong>
+          <small>Escala, GPS, despacho automático, suporte, relatório e nota fiscal</small>
         </div>
         <div class="resumo-val">R$ 699</div>
       </div>
       <div class="resumo-row total">
-        <div><strong>Total mensal estimado</strong></div>
+        <div class="resumo-label"><strong>Total mensal estimado</strong></div>
         <div class="resumo-val">≈ R$ 7.379</div>
       </div>
       <div class="resumo-badges">
@@ -746,35 +774,37 @@ footer{background:var(--ink);padding:36px 0 24px;}
       </div>
     </div>
 
-    <!-- SIMULAÇÃO PISO / TETO -->
-    <div class="fade-up" style="margin-top:20px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);">
-      <div style="padding:14px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
-        <span style="font-size:13px;font-weight:800;color:var(--ink);">Quanto você vai pagar na prática?</span>
-        <span style="font-size:11px;color:var(--ink-light);margin-left:auto;">3 cenários reais</span>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
-        <div style="padding:18px 20px;border-right:1px solid var(--border);">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;">Semana calma</div>
-          <div style="font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--ink);line-height:1;">≈ R$ 5.800</div>
-          <div style="font-size:11px;color:var(--ink-light);margin-top:6px;line-height:1.5;">Seg–Qui com movimento abaixo da média. Corridas curtas.</div>
+    <!-- CENÁRIOS — REGRA: frase "Em mês fraco você paga menos. Em mês forte você já faturou mais." -->
+    <div style="margin-top:24px;" class="fade-up">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-light);margin-bottom:12px;">Quanto você vai pagar na prática? 3 cenários reais</div>
+      <div class="cenarios-grid" style="background:var(--white);">
+        <div class="cenario-col">
+          <div class="cenario-label">Semana calma</div>
+          <div class="cenario-val">≈ R$ 5.800</div>
+          <div class="cenario-desc">Segunda a quinta com movimento abaixo da média e corridas curtas.</div>
         </div>
-        <div style="padding:18px 20px;border-right:1px solid var(--border);background:var(--red-soft);">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:8px;">Mês típico</div>
-          <div style="font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--red);line-height:1;">≈ R$ 7.379</div>
-          <div style="font-size:11px;color:var(--ink-light);margin-top:6px;line-height:1.5;">Base da proposta. Volume de fevereiro como referência.</div>
+        <div class="cenario-col destaque">
+          <div class="cenario-label">Mês típico</div>
+          <div class="cenario-val">≈ R$ 7.379</div>
+          <div class="cenario-desc">Base desta proposta, com o volume de fevereiro como referência.</div>
         </div>
-        <div style="padding:18px 20px;">
-          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mid);margin-bottom:8px;">Pico total</div>
-          <div style="font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--ink);line-height:1;">≈ R$ 9.200</div>
-          <div style="font-size:11px;color:var(--ink-light);margin-top:6px;line-height:1.5;">Mês cheio com feriados e volume acima. Teto realista.</div>
+        <div class="cenario-col">
+          <div class="cenario-label">Pico total</div>
+          <div class="cenario-val">≈ R$ 9.200</div>
+          <div class="cenario-desc">Mês cheio, com feriados e volume acima da média. Teto realista.</div>
         </div>
       </div>
-      <div style="padding:12px 24px;background:#fafafa;border-top:1px solid var(--border);font-size:12px;color:var(--ink-light);">
-        💡 O custo variável sobe quando você <strong>entrega mais</strong> — o que significa que sua receita também subiu. Você nunca paga caro em mês fraco.
+      <!-- REGRA FRASE: direção de confiança, não defesa -->
+      <div class="cenario-insight">
+        💡 Em mês fraco você paga menos. Em mês forte <strong>você já faturou mais</strong>.
       </div>
     </div>
-    <div style="margin-top:24px;text-align:center;">
-      <a href="Contrato_Meridio_Pizza.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--ink-mid);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:13px 28px;border-radius:50px;border:1.5px solid var(--border);text-decoration:none;box-shadow:0 1px 6px rgba(0,0,0,.06);transition:box-shadow .2s,border-color .2s;" onmouseover="this.style.borderColor='#D72638';this.style.boxShadow='0 4px 16px rgba(215,38,56,.12)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='0 1px 6px rgba(0,0,0,.06)'">
+
+    <div style="margin-top:24px;text-align:center;" class="fade-up">
+      <a href="Contrato_Meridio_Pizza.pdf" target="_blank"
+         style="display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--ink-mid);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:13px 28px;border-radius:50px;border:1.5px solid var(--border);text-decoration:none;box-shadow:0 1px 6px rgba(0,0,0,.06);transition:box-shadow .2s,border-color .2s;"
+         onmouseover="this.style.borderColor='#EA1D2C';this.style.boxShadow='0 4px 16px rgba(234,29,44,.12)'"
+         onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='0 1px 6px rgba(0,0,0,.06)'">
         <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M4 17h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Ler o contrato completo
       </a>
@@ -782,121 +812,53 @@ footer{background:var(--ink);padding:36px 0 24px;}
     </div>
   </div>
 </section>
+<div class="divider"></div>
 
-
-<!-- TRANSIÇÃO SEM FRICÇÃO -->
+<!-- ══ TIMELINE — como funciona a entrada ═══════════════════════════
+     REGRA: 3 passos máximo. Foco em "você não faz nada".
+     Remove fricção do "vai ser complicado trocar".
+═══════════════════════════════════════════════════════════════════ -->
 <section style="background:var(--white);">
   <div class="wrap">
     <div class="eyebrow fade-up">Como funciona a entrada</div>
     <h2 class="sec-title fade-up">Você não fica um dia<br><em>sem cobertura.</em></h2>
-    <p class="sec-lead fade-up">A transição é gerenciada por nós. Você não precisa desmontar nada antes de ter o novo funcionando.</p>
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
-      <div style="background:var(--bone);border-radius:var(--r);padding:22px 18px;">
-        <div style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;color:var(--ink);margin-bottom:8px;">Dia 1</div>
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Assinatura + integração</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;">Contrato assinado digitalmente. Configuramos a plataforma Foody Delivery no seu sistema. Você não faz nada.</div>
+    <p class="sec-lead fade-up">A transição é gerenciada por nós. Você não precisa desmontar nada antes de ter o novo no ar.</p>
+    <div class="timeline-grid fade-up">
+      <div class="timeline-card">
+        <div class="timeline-dia">Dia 1</div>
+        <div class="timeline-title">Assinatura + integração</div>
+        <div class="timeline-desc">Contrato assinado digitalmente. Configuramos o sistema de gestão de entregas para o Meridio. Você não faz nada.</div>
       </div>
-      <div style="background:var(--bone);border-radius:var(--r);padding:22px 18px;">
-        <div style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;color:var(--ink);margin-bottom:8px;">Dia 3</div>
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Escala montada</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;">Você recebe a primeira escala confirmada com nomes e turnos. Dá pra ver quem está alocado antes de começar.</div>
+      <div class="timeline-card">
+        <div class="timeline-dia">Dia 3</div>
+        <div class="timeline-title">Escala montada</div>
+        <div class="timeline-desc">Você recebe a primeira escala confirmada com nomes e turnos. Dá para ver quem está alocado antes de o primeiro turno começar.</div>
       </div>
-      <div style="background:var(--red-soft);border:1.5px solid rgba(234,29,44,.15);border-radius:var(--r);padding:22px 18px;">
-        <div style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;color:var(--red);margin-bottom:8px;">Dia 5</div>
-        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Operação ao vivo</div>
-        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;">Primeiro turno rodando. Entregadores em campo, GPS ativo, despacho automático. Você acompanha em tempo real.</div>
+      <div class="timeline-card destaque">
+        <div class="timeline-dia">Dia 5</div>
+        <div class="timeline-title">Operação ao vivo</div>
+        <div class="timeline-desc">Primeiro turno rodando. Entregadores em campo, GPS ativo e despacho automático funcionando. Você acompanha tudo em tempo real.</div>
       </div>
     </div>
-    <div class="fade-up" style="background:var(--green-soft);border:1px solid rgba(62,125,50,.15);border-radius:var(--r-sm);padding:18px 22px;font-size:13px;color:var(--green);line-height:1.7;">
-      <strong>Garantia de 30 dias.</strong> Se nos primeiros 30 dias de operação você sentir que a estrutura não entrega o que está nesta proposta, encerramos sem multa e sem burocracia. Só precisamos dos 30 dias de aviso — nada mais.
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
 
-<!-- CONDIÇÕES -->
-<section class="cond-bg">
-  <div class="wrap">
-    <div class="eyebrow fade-up">Condições do contrato</div>
-    <h2 class="sec-title fade-up">Transparente<br><em>do começo ao fim.</em></h2>
-    <p class="sec-lead fade-up">Vigência de 12 meses com renovação automática. Rescisão com 30 dias de aviso. Simples assim.</p>
-    <div class="cond-pills fade-up">
-      <div class="cond-pill"><div class="cond-pill-label">Vigência</div><div class="cond-pill-val">12 meses</div></div>
-      <div class="cond-pill"><div class="cond-pill-label">Pagamento</div><div class="cond-pill-val">Toda segunda-feira</div></div>
-      <div class="cond-pill"><div class="cond-pill-label">Reajuste anual</div><div class="cond-pill-val">IPCA</div></div>
-      <div class="cond-pill"><div class="cond-pill-label">Rescisão</div><div class="cond-pill-val">30 dias de aviso</div></div>
-      <div class="cond-pill"><div class="cond-pill-label">Assinatura</div><div class="cond-pill-val">Digital · sem cartório</div></div>
-      <div class="cond-pill"><div class="cond-pill-label">Início da operação</div><div class="cond-pill-val">Até 5 dias úteis após assinatura + 1ª mensalidade</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;" class="fade-up">
-      <div style="background:#fff8f0;border:1px solid rgba(215,100,38,.2);border-radius:var(--r-sm);padding:16px 18px;">
-        <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#a05000;margin-bottom:8px;">Rescisão antecipada</div>
-        <div style="font-size:13px;color:#7a3c00;line-height:1.6;">Encerramento antes dos 12 meses sem os 30 dias de aviso resulta em multa de <strong>20% sobre os meses restantes</strong>, calculada pela média dos últimos 3 fechamentos. Com aviso em dia: sem multa, sem penalidade.</div>
-      </div>
-      <div style="background:#f5f0ff;border:1px solid rgba(100,60,200,.15);border-radius:var(--r-sm);padding:16px 18px;">
-        <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4a2090;margin-bottom:8px;">Não aliciamento</div>
-        <div style="font-size:13px;color:#3d1a70;line-height:1.6;">Durante o contrato e nos 12 meses após o encerramento, fica vedada a contratação direta dos entregadores da operação. Na prática: se a parceria funcionar bem, você nunca vai querer fazer isso. A multa de <strong>R$ 5.000 por entregador</strong> existe para proteger a estrutura que você está contratando, não para te prender.</div>
+    <!-- GARANTIA — REGRA: sempre antes do CTA, com destaque visual -->
+    <div class="garantia-box fade-up">
+      <div class="garantia-icon">🛡️</div>
+      <div>
+        <div class="garantia-title">Garantia de 30 dias</div>
+        <div class="garantia-desc">Se nos primeiros 30 dias você sentir que a estrutura não entrega o que está nesta proposta, encerramos sem multa e sem burocracia. Só precisamos do aviso de 30 dias. Nada mais.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROVA SOCIAL -->
-<section style="background:#fafafa;padding:48px 0;">
-  <div class="wrap">
-    <div class="eyebrow fade-up">Quem já opera com a gente</div>
-    <h2 class="sec-title fade-up">Você não seria<br><em>o primeiro.</em></h2>
-    <p class="sec-lead fade-up">Cada restaurante ativo é uma referência disponível. Peça o contato — apresentamos sem problemas.</p>
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">R</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante A</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2024</div></div>
-        </div>
-        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"A escala chega no domingo. Sei exatamente quem tá no turno antes de a semana começar. Isso mudou tudo."</div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">M</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante B</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2023</div></div>
-        </div>
-        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"Sexta-feira virou dia de vender, não de apagar incêndio. O pico chegou, os entregadores chegaram junto."</div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;box-shadow:var(--shadow);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;">P</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--ink);">Restaurante C</div><div style="font-size:11px;color:var(--ink-light);">Osasco · desde 2024</div></div>
-        </div>
-        <div style="font-size:12px;color:var(--ink-mid);line-height:1.6;font-style:italic;">"Antes eu ficava torcendo pra ninguém faltar. Agora, se alguém cancela, já tá coberto antes do turno."</div>
-      </div>
-    </div>
-    <div class="fade-up" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px 22px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow);">
-      <div style="font-size:22px;flex-shrink:0;">💬</div>
-      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;">Quer falar diretamente com quem já opera? <strong style="color:var(--ink);">Peça o contato via WhatsApp</strong> — apresentamos o restaurante e você conversa sem intermediário.</div>
-      <a href="https://wa.me/5511970334125?text=Quero+falar+com+um+restaurante+que+já+opera+com+a+Osasco+Express" style="flex-shrink:0;display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:10px 18px;border-radius:50px;text-decoration:none;white-space:nowrap;">Pedir referência</a>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-
-<!-- CTA -->
+<!-- ══ CTA FINAL ══════════════════════════════════════════════════ -->
 <section class="cta-section">
   <div class="wrap">
     <div class="cta-inner">
-      <!-- PERDA CALCULADA (loss aversion) -->
-      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:16px 24px;margin-bottom:32px;display:inline-block;">
-        <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;">O que você perde por mês sem estrutura</div>
-        <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
-          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">~R$ 936</div><div style="font-size:11px;color:rgba(255,255,255,.4);">12 cancelamentos × R$ 78</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.1);"></div>
-          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">∞</div><div style="font-size:11px;color:rgba(255,255,255,.4);">Clientes que não voltam</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.1);"></div>
-          <div style="text-align:center;"><div style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#f87171;">+40%</div><div style="font-size:11px;color:rgba(255,255,255,.4);">Alta em cancelamentos</div></div>
-        </div>
-      </div>
       <div class="cta-eyebrow">Osasco Express × Meridio Pizza</div>
       <h2 class="cta-title">Seu pico de sexta<br><em>nunca mais vai travar.</em></h2>
-      <p class="cta-desc">Escala confirmada, 2 entregadores na semana e 3 nos fins de semana para o início. Bag térmica e GPS ativo. Conforme a operação cresce, a escala cresce junto — você decide.</p>
+      <p class="cta-desc">Escala confirmada, entregadores gerenciados, bag térmica e GPS ativo. A próxima semana disponível está esperando você.</p>
       <div class="cta-buttons">
         <a href="https://wa.me/5511970334125?text=Olá%2C+quero+fechar+a+proposta+Osasco+Express+para+o+Meridio+Pizza" class="btn-main">
           <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M17 10.5A7 7 0 1 1 3 10.5c0-1.4.4-2.7 1.1-3.8L3 3l3.9 1c1-.6 2.1-1 3.1-1a7 7 0 0 1 7 7z" stroke="currentColor" stroke-width="1.8"/></svg>
@@ -940,6 +902,7 @@ footer{background:var(--ink);padding:36px 0 24px;}
   </div>
 </footer>
 
+<!-- STICKY — sempre visível no mobile -->
 <div class="sticky">
   <a href="https://wa.me/5511970334125?text=Olá%2C+quero+fechar+a+proposta+Osasco+Express+para+o+Meridio+Pizza">
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17 10.5A7 7 0 1 1 3 10.5c0-1.4.4-2.7 1.1-3.8L3 3l3.9 1c1-.6 2.1-1 3.1-1a7 7 0 0 1 7 7z" stroke="currentColor" stroke-width="1.6"/></svg>
